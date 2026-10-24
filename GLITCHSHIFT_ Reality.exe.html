@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!-- saved from url=(0409)https://sdmntprindiasocentral.oaiusercontent.com/files/00000000-9b88-8211-908b-5144e6cd31fe/raw?se=2026-10-24T00%3A06%3A59Z&sp=r&sv=2026-02-06&sr=b&scid=96507d4e-9220-4b1d-aba0-3fe2df453157&skoid=37f774a3-b6f2-4e56-9fdd-339e5d6e97f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-23T06%3A22%3A39Z&ske=2026-10-24T06%3A22%3A39Z&sks=b&skv=2026-02-06&sig=n%2BQ0TNNgEG/8DZ5GVVbBlFNTkW06xdbFxh%2ByUtGnTF8%3D -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>GLITCHSHIFT: Reality.exe</title>
+<style>
+:root{--cyan:#61f7ff;--pink:#ff4edb;--violet:#9876ff;--gold:#ffd66e;--red:#ff5277}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#050713;color:#effaff;font-family:Inter,Segoe UI,system-ui,Arial,sans-serif}button{font:inherit;cursor:pointer}
+#app{position:relative;width:100vw;height:100vh;background:#07091a;overflow:hidden}canvas{width:100%;height:100%;display:block;touch-action:none}
+#hud{position:absolute;inset:0;pointer-events:none}.top{position:absolute;top:12px;left:14px;right:14px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.badge{border:1px solid #355b86;border-radius:8px;padding:8px 11px;background:#080e25db;box-shadow:0 0 18px #2c8dc51a;font:800 11px ui-monospace,monospace;letter-spacing:.06em;backdrop-filter:blur(5px)}.brand{font-family:Inter,system-ui,sans-serif;letter-spacing:.12em}.brand b{color:var(--cyan)}.stats{color:#d9e4ff}.stats em{color:var(--cyan);font-style:normal}.hearts{color:#ff668b;font-size:15px;letter-spacing:2px}
+#mission{position:absolute;top:68px;left:50%;transform:translateX(-50%);min-width:220px;text-align:center;padding:8px 13px;border:1px solid #34547b;border-radius:8px;background:#070d21d9}#mission b{font:900 10px ui-monospace,monospace;letter-spacing:.18em;color:var(--cyan)}#mission div{font-weight:850;font-size:12px;margin-top:4px}
+#powers{position:absolute;top:130px;left:50%;transform:translateX(-50%);display:flex;gap:5px}.power{border:1px solid #3b4f79;border-radius:6px;background:#080e23e8;padding:6px 8px;font:800 9px ui-monospace,monospace;color:#aabbdc;letter-spacing:.05em}.power.active{color:var(--cyan);border-color:var(--cyan);box-shadow:0 0 13px #61f7ff32}
+#toast{position:absolute;top:178px;left:50%;transform:translateX(-50%);border:1px solid var(--cyan);border-radius:6px;padding:9px 14px;background:#07172bf5;font:900 10px ui-monospace,monospace;letter-spacing:.08em;white-space:nowrap;display:none}
+#bottom{position:absolute;left:14px;bottom:12px;border-left:2px solid var(--cyan);padding:7px 10px;background:linear-gradient(90deg,#07152bde,transparent);font:10px ui-monospace,monospace;color:#b9c8e5;line-height:1.7}
+#touch{position:absolute;right:12px;bottom:12px;display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;max-width:55vw;pointer-events:auto}.ctl{min-width:40px;min-height:39px;padding:7px 9px;border-radius:8px;border:1px solid #43638e;background:#0a1430e8;color:#effaff;font-size:10px;font-weight:900;touch-action:manipulation}.ctl:active,.ctl.active{border-color:var(--cyan);color:var(--cyan);background:#163052}
+.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;background:radial-gradient(ellipse at 50% 42%,#171a48c9,#03040cf5 75%);pointer-events:auto}.panel{position:relative;width:min(690px,100%);max-height:94vh;overflow:auto;padding:clamp(20px,4vw,36px);border:1px solid #45658f;border-radius:15px;background:linear-gradient(145deg,#0b1836f7,#100a2bf7);box-shadow:0 0 70px #6744ef28,inset 0 0 28px #61f7ff08}.panel:before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),var(--pink),transparent)}
+.eyebrow{font:900 10px ui-monospace,monospace;letter-spacing:.24em;color:var(--cyan)}h1{margin:17px 0 12px;font-size:clamp(36px,7vw,66px);line-height:.9;letter-spacing:-.055em;text-shadow:0 0 32px #7b4bff4d}h1 span{color:var(--cyan)}h1 small{display:block;margin-top:13px;font-size:.29em;letter-spacing:.28em;color:var(--pink)}.lead{color:#c3cde5;font-size:13px;line-height:1.65}.featuregrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}.feature{border:1px solid #2d416b;border-radius:8px;padding:11px;background:#080e24;color:#bdcbe8;font-size:11px;line-height:1.5}.feature b{display:block;color:var(--cyan);font:900 10px ui-monospace,monospace;margin-bottom:5px}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.primary,.secondary{padding:12px 16px;border-radius:7px;font-size:11px;font-weight:950;letter-spacing:.08em}.primary{background:var(--cyan);color:#04111c;border:1px solid var(--cyan);box-shadow:0 0 20px #61f7ff36}.secondary{background:#101a38;color:#eefaff;border:1px solid #455982}
+@media(max-width:620px){.top{top:6px;left:6px;right:6px;gap:4px}.badge{font-size:9px;padding:6px 7px}.hearts{font-size:12px}#mission{top:75px}#powers{top:137px;gap:3px}.power{font-size:8px;padding:5px}#bottom{left:6px;bottom:67px;font-size:8px;max-width:64vw}#touch{right:5px;bottom:5px;gap:3px;max-width:100vw}.ctl{min-width:34px;min-height:35px;padding:6px;font-size:9px}.featuregrid{grid-template-columns:1fr}.panel{max-height:92vh}.lead{font-size:12px}}
+</style></head>
+<body><div id="app"><canvas id="game" width="1227" height="919"></canvas>
+<div id="hud">
+ <div class="top"><div class="badge brand">◈ GLITCHSHIFT <b>// REALITY.EXE</b></div><div class="badge" id="levelText">LEVEL 01 / 04 · 1s</div><div class="badge stats" id="statText">SHARDS <em>0/6</em> · SCORE <em>0000</em></div><div class="badge hearts" id="heartText">♥ ♥ ♥ ♥ ♥</div></div>
+ <div id="mission"><b id="missionCode">SECTOR 01 // BROKEN RUINS</b><div id="missionName">Flip gravity to reach upper rails · collect 6 shards</div></div>
+ <div id="powers"><span class="power" id="gravityPower">Q · GRAVITY</span><span class="power" id="freezePower">E · TIME FREEZE</span><span class="power" id="phasePower">F · DIMENSION</span></div>
+ <div id="toast" style="display: none;">SIMULATION ONLINE</div><div id="bottom">MOVE A/D OR ← → · JUMP SPACE<br>Q GRAVITY FLIP · E TIME FREEZE · F DIMENSION · R RESTART · ESC PAUSE</div>
+ <div id="touch"><button class="ctl" data-key="left">◀</button><button class="ctl" data-key="right">▶</button><button class="ctl" data-key="jump">JUMP</button><button class="ctl" data-action="gravity">Q GRAV</button><button class="ctl" data-action="freeze">E FREEZE</button><button class="ctl" data-action="phase">F PHASE</button></div>
+</div>
+<div class="overlay" id="overlay" style="display: flex;"><div class="panel" id="panel"><div class="eyebrow">SIMULATION FAILURE</div><h1>TIME <span>EXPIRED</span></h1><p class="lead">The sector timer reached zero before the portal was opened. Your score: 0. Reboot the run and try a different route.</p><div class="buttons"><button class="primary" id="retry">REBOOT RUN</button><button class="secondary" id="home">MAIN MENU</button></div></div></div>
+</div>
+<script>
+(()=>{'use strict';
+const canvas=document.querySelector('#game'),ctx=canvas.getContext('2d'),overlay=document.querySelector('#overlay'),panel=document.querySelector('#panel');const $=id=>document.getElementById(id);
+const C={cyan:'#61f7ff',pink:'#ff4edb',violet:'#9876ff',gold:'#ffd66e',red:'#ff5277',green:'#7bffb4',blue:'#6792ff'};
+let W=960,H=540,dpr=1,last=0,state='menu',level=0,score=0,hearts=5,shardsGot=0,limit=120,remaining=120,worldW=1800,camera=0,gravity=1,freeze=0,dimension=0,keys={},touch={},player,platforms=[],spikes=[],shards=[],checkpoints=[],portal,particles=[],stars=[],toastUntil=0,audio=null,muted=false,levelStart=0,invuln=0;
+const shardTargets=[6,8,14,18],timeLimits=[100,125,155,190],levelNames=['BROKEN RUINS','TIME FRACTURE','DUAL DIMENSION','SYSTEM CORE'];
+function resize(){let r=canvas.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);stars=Array.from({length:140},()=>({x:Math.random()*W,y:Math.random()*H,r:.3+Math.random()*1.5,a:.15+Math.random()*.65}));}window.addEventListener('resize',resize);
+function audioInit(){if(!audio){try{audio=new(window.AudioContext||window.webkitAudioContext)()}catch(e){audio=null}}if(audio&&audio.state==='suspended')audio.resume()}
+function tone(freq,dur=.09,type='sine',vol=.035,slide=0,delay=0){if(muted)return;audioInit();if(!audio)return;try{let o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.setValueAtTime(freq,audio.currentTime+delay);if(slide)o.frequency.exponentialRampToValueAtTime(Math.max(40,freq+slide),audio.currentTime+delay+dur);g.gain.setValueAtTime(.0001,audio.currentTime+delay);g.gain.exponentialRampToValueAtTime(vol,audio.currentTime+delay+.015);g.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+delay+dur);o.connect(g);g.connect(audio.destination);o.start(audio.currentTime+delay);o.stop(audio.currentTime+delay+dur+.02)}catch(e){}}
+function sfx(n){if(n==='jump')tone(260,.08,'square',.025,170);if(n==='collect'){tone(650,.1,'sine',.04,260);tone(930,.12,'sine',.025,90,0.07)}if(n==='power')tone(180,.17,'sawtooth',.03,440);if(n==='freeze')tone(720,.2,'triangle',.035,-440);if(n==='phase')tone(360,.14,'sine',.03,520);if(n==='hurt')tone(125,.24,'sawtooth',.045,-55);if(n==='portal'){tone(440,.15,'triangle',.04,180);tone(660,.17,'triangle',.04,220,.14);tone(880,.24,'triangle',.04,280,.29)}if(n==='click')tone(480,.045,'square',.018)}
+function say(t){$('toast').textContent=t;$('toast').style.display='block';toastUntil=performance.now()+1500}
+function addPlatform(x,y,w,h=18,kind='solid',dim=0){platforms.push({x,y,w,h,kind,dim})}
+function addSpike(x,y,w=24,h=23,axis='x',range=0,speed=1.4,type='spike'){spikes.push({x,y,w,h,bx:x,by:y,axis,range,speed,phase:Math.random()*6.28,type})}
+function addSaw(x,y,axis='y',range=70,speed=2){addSpike(x,y,34,34,axis,range,speed,'saw')}
+function addLaser(x,y,w=90,h=10,axis='x',range=0,speed=1){addSpike(x,y,w,h,axis,range,speed,'laser')}
+function addShard(x,y){shards.push({x,y,got:false,phase:Math.random()*6.28})}
+function buildLevel(n){
+ level=n;platforms=[];spikes=[];shards=[];checkpoints=[];particles=[];camera=0;gravity=1;freeze=0;dimension=0;invuln=0;shardsGot=0;limit=timeLimits[n];remaining=limit;
+ worldW=[1720,1980,2240,2600][n];const floor=H-72;
+ // Each sector has a distinct route silhouette and its own obstacle language.
+ if(n===0){
+  // BROKEN RUINS: first gravity lesson, with overhead rails and airborne saws.
+  [[0,floor,180],[225,floor-5,105],[380,floor-55,100],[535,floor-115,100],[690,floor-50,105],[855,floor-130,110],[1030,floor-72,100],[1190,floor-145,105],[1370,floor-65,110],[1535,floor,185]].forEach(a=>addPlatform(a[0],a[1],a[2],22));
+  [[150,105,170],[405,82,125],[675,100,140],[950,76,135],[1235,98,140]].forEach(a=>addPlatform(a[0],a[1],a[2],16,'solid'));
+  addSpike(280,floor-31,32,26,'x',42,1.7,'spike');addSpike(590,floor-145,30,25,'y',42,1.4,'spike');
+  addSaw(465,floor-205,'y',86,2.2);addSaw(780,floor-235,'x',90,1.8);addSaw(1110,floor-230,'y',75,2.4);addSaw(1460,floor-185,'x',65,2.1);
+  addLaser(895,floor-202,105,9,'y',35,1.6);addSpike(1280,floor-174,26,24,'x',45,1.8,'spike');
+ } else if(n===1){
+  // TIME FRACTURE: narrow stepping stones and freeze-to-cross saw/laser gauntlet.
+  [[0,floor,145],[185,floor-75,82],[310,floor-145,80],[435,floor-75,78],[560,floor-190,90],[700,floor-105,78],[825,floor-205,84],[965,floor-115,78],[1100,floor-180,84],[1240,floor-70,82],[1380,floor-150,82],[1520,floor-220,90],[1675,floor-115,78],[1815,floor,165]].forEach(a=>addPlatform(a[0],a[1],a[2],18));
+  [[235,92,115],[510,70,115],[790,88,120],[1070,65,120],[1375,85,115],[1630,70,125]].forEach(a=>addPlatform(a[0],a[1],a[2],15,'solid'));
+  for(let i=0;i<5;i++)addSaw(365+i*300,floor-250-(i%2)*35,'x',88,2.5+i*.18);
+  addLaser(625,floor-166,130,10,'y',50,1.8);addLaser(1160,floor-245,110,10,'y',58,2.1);
+  addSpike(270,floor-100,25,22,'y',50,1.8,'spike');addSpike(1010,floor-153,25,22,'x',45,2,'spike');addSpike(1590,floor-255,25,22,'y',60,1.7,'spike');
+ } else if(n===2){
+  // DUAL DIMENSION: alternating phase-only islands; the wrong phase leaves visible ghost platforms.
+  [[0,floor,155],[185,floor-80,76],[305,floor-155,76],[430,floor-225,78],[565,floor-145,76],[690,floor-70,78],[820,floor-165,76],[950,floor-245,80],[1085,floor-160,75],[1210,floor-85,76],[1340,floor-185,78],[1470,floor-265,80],[1605,floor-180,78],[1740,floor-100,76],[1870,floor-195,80],[2010,floor-115,80],[2110,floor,130]].forEach((a,i)=>addPlatform(a[0],a[1],a[2],17,i%2?'dimension':'solid',i%2?1:0));
+  [[250,78,110],[530,90,110],[805,72,115],[1095,88,110],[1390,73,115],[1690,90,110],[1940,72,110]].forEach(a=>addPlatform(a[0],a[1],a[2],14,'dimension',0));
+  addSaw(370,floor-295,'y',70,2.4);addSaw(750,floor-275,'x',72,2.2);addSaw(1160,floor-270,'y',85,2.7);addSaw(1540,floor-310,'x',82,2.5);addSaw(1900,floor-275,'y',72,2.4);
+  addLaser(610,floor-210,115,9,'y',48,1.8);addLaser(1320,floor-235,125,9,'y',55,2);
+  addSpike(495,floor-180,24,22,'x',36,1.8,'spike');addSpike(1630,floor-205,24,22,'y',55,2,'spike');
+ } else {
+  // SYSTEM CORE: alternating ceiling/floor routes, laser gates, saws and phase platforms.
+  [[0,floor,140],[170,floor-85,70],[280,floor-170,70],[395,floor-95,72],[510,floor-210,72],[630,floor-125,70],[745,floor-225,70],[860,floor-140,70],[975,floor-250,72],[1095,floor-160,70],[1210,floor-85,72],[1325,floor-200,72],[1445,floor-280,72],[1565,floor-185,70],[1680,floor-100,70],[1795,floor-215,72],[1915,floor-295,72],[2040,floor-190,70],[2160,floor-110,72],[2275,floor-225,72],[2390,floor-145,75],[2480,floor,120]].forEach((a,i)=>addPlatform(a[0],a[1],a[2],16,(i%3===1||i%4===0)?'dimension':'solid',i%2));
+  // Ceiling path is essential: flip gravity to land on these solid rails.
+  [[230,74,115],[500,58,120],[775,78,120],[1045,55,125],[1320,73,120],[1590,55,125],[1865,75,120],[2140,58,130]].forEach(a=>addPlatform(a[0],a[1],a[2],15,'solid'));
+  for(let i=0;i<7;i++)addSaw(340+i*310,floor-280-(i%3)*22,i%2?'x':'y',75+i%2*20,2.5+i*.12);
+  addLaser(450,floor-180,105,10,'y',50,2.1);addLaser(900,floor-225,120,10,'y',62,2.3);addLaser(1475,floor-250,120,10,'y',55,2.4);addLaser(2025,floor-230,130,10,'y',65,2.1);
+  addSpike(650,floor-150,25,22,'x',48,2,'spike');addSpike(1170,floor-185,25,22,'y',65,2.2,'spike');addSpike(1760,floor-235,25,22,'x',55,2.1,'spike');addSpike(2320,floor-180,25,22,'y',60,2.4,'spike');
+ }
+ // Place the exact target number of shards on reachable ledges across each custom route.
+ const target=shardTargets[n];
+ const solidPlatforms=platforms.filter(p=>p.kind!=='dimension');
+ for(let i=0;i<target;i++){
+   let x=80+(worldW-165)*(i+.5)/target;
+   let candidates=platforms.filter(p=>isPlatformShardable(p)&&x>=p.x+12&&x<=p.x+p.w-12);
+   let p=candidates.sort((a,b)=>Math.abs((a.x+a.w/2)-x)-Math.abs((b.x+b.w/2)-x))[0];
+   if(!p)p=solidPlatforms.reduce((best,q)=>Math.abs((q.x+q.w/2)-x)<Math.abs((best.x+best.w/2)-x)?q:best,solidPlatforms[0]);
+   x=Math.max(p.x+12,Math.min(p.x+p.w-12,x));
+   addShard(x,p.y-23-(i%3===1?7:0));
+ }
+ if(n>=1){let p=solidPlatforms.find(p=>p.x>worldW*.52);if(p)checkpoints.push({x:p.x+10,y:p.y-55,active:false})}
+ player={x:42,y:floor-43,w:26,h:37,vx:0,vy:0,onGround:false,jumpLatch:false,face:1,anim:0,spawnX:42,spawnY:floor-43};
+ portal={x:worldW-83,y:floor-80,w:40,h:80,open:false};levelStart=performance.now();updateHud();
+ $('missionCode').textContent=`SECTOR ${String(n+1).padStart(2,'0')} // ${levelNames[n]}`;
+ const objectives=[`Flip gravity to reach upper rails · collect ${target} shards`,`Freeze the moving saws to cross · collect ${target} shards`,`Switch dimensions to reveal safe platforms · collect ${target} shards`,`Combine gravity, freeze and phase-shift · collect ${target} shards`];
+ $('missionName').textContent=objectives[n];
+}
+function isPlatformShardable(p){return p.kind!=='dimension'||p.dim===dimension}
+function updateHud(){ $('levelText').textContent=`LEVEL ${String(level+1).padStart(2,'0')} / 04 · ${Math.ceil(remaining)}s`;$('statText').innerHTML=`SHARDS <em>${shardsGot}/${shardTargets[level]}</em> · SCORE <em>${String(score).padStart(4,'0')}</em>`;$('heartText').textContent=Array.from({length:5},(_,i)=>i<hearts?'♥':'♡').join(' ');$('gravityPower').classList.toggle('active',gravity<0);$('freezePower').classList.toggle('active',freeze>0);$('phasePower').classList.toggle('active',dimension===1)}
+function panelMenu(){state='menu';overlay.style.display='flex';panel.innerHTML=`<div class="eyebrow">PS01 · SINGLE-PLAYER PUZZLE ADVENTURE</div><h1>GLITCH<span>SHIFT</span><small>REALITY.EXE // NEON BREACH</small></h1><p class="lead">The simulation is broken. Invert gravity, freeze time, and phase between dimensions. Recover every data shard before the sector timer expires, then escape through the portal.</p><div class="featuregrid"><div class="feature"><b>Q // GRAVITY INVERSION</b>Flip gravity to traverse overhead rails and escape tricky gaps.</div><div class="feature"><b>E // TIME FREEZE</b>Pause moving corruption hazards for 3 seconds.</div><div class="feature"><b>F // DIMENSION SHIFT</b>Swap realities to reveal and solidify phase platforms.</div></div><p class="lead"><b style="color:var(--cyan)">MISSION:</b> 6 → 8 → 14 → 18 shards across four increasingly difficult levels. You have five hearts for the entire run. Touch spikes and lose a heart.</p><div class="buttons"><button class="primary" id="start">▶ START RUN</button><button class="secondary" id="how">FIELD MANUAL</button><button class="secondary" id="sound">${muted?'SOUND OFF':'♫ SOUND ON'}</button></div>`;
+ $('start').onclick=()=>{audioInit();sfx('click');score=0;hearts=5;buildLevel(0);state='play';overlay.style.display='none';say('SIMULATION ONLINE')};
+ $('how').onclick=showManual;$('sound').onclick=()=>{muted=!muted;$('sound').textContent=muted?'SOUND OFF':'♫ SOUND ON';if(!muted)sfx('click')};
+}
+function showManual(){panel.innerHTML=`<div class="eyebrow">OPERATOR FIELD MANUAL</div><h1 style="font-size:42px">BEND THE <span>RULES</span></h1><p class="lead"><b style="color:var(--cyan)">MOVE:</b> A/D or arrow keys. <b style="color:var(--cyan)">JUMP:</b> Space/W/↑.</p><p class="lead"><b style="color:var(--cyan)">Q — GRAVITY:</b> flip gravity to land on overhead rails. <b style="color:var(--cyan)">E — TIME FREEZE:</b> freeze hazards briefly. <b style="color:var(--cyan)">F — DIMENSION:</b> toggle phase platforms.</p><p class="lead">Collect every shard to unlock the portal. Spikes remove hearts. The timer hitting zero or losing all five hearts ends the run. Checkpoints save your respawn position. Press R to restart a level, Esc to pause.</p><div class="buttons"><button class="primary" id="manualStart">START RUN</button><button class="secondary" id="manualBack">BACK</button></div>`;$('manualStart').onclick=()=>{audioInit();score=0;hearts=5;buildLevel(0);state='play';overlay.style.display='none'};$('manualBack').onclick=panelMenu}
+function pauseGame(){if(state!=='play')return;state='paused';panel.innerHTML=`<div class="eyebrow">SIMULATION SUSPENDED</div><h1>PAUSE<span> MENU</span></h1><p class="lead">Sector ${level+1} · ${shardsGot}/${shardTargets[level]} shards · ${Math.ceil(remaining)} seconds remaining.</p><div class="buttons"><button class="primary" id="resume">RESUME</button><button class="secondary" id="restart">RESTART LEVEL</button><button class="secondary" id="home">MAIN MENU</button></div>`;overlay.style.display='flex';$('resume').onclick=()=>{state='play';overlay.style.display='none';levelStart=performance.now()-((limit-remaining)*1000)};$('restart').onclick=()=>{buildLevel(level);state='play';overlay.style.display='none'};$('home').onclick=panelMenu}
+function winScreen(){score+=Math.max(0,Math.floor(remaining*5));sfx('portal');if(level<3){state='between';panel.innerHTML=`<div class="eyebrow">SECTOR CLEAR · PORTAL UNLOCKED</div><h1>BREACH <span>SUCCESS</span></h1><p class="lead">All ${shardTargets[level]} shards recovered. Exit portal stabilized. Time bonus added to your score.</p><div class="featuregrid"><div class="feature"><b>SHARDS</b>${shardsGot}/${shardTargets[level]}</div><div class="feature"><b>TIME BONUS</b>+${Math.floor(remaining*5)}</div><div class="feature"><b>HEARTS LEFT</b>${hearts}/5</div></div><div class="buttons"><button class="primary" id="next">ENTER LEVEL ${level+2} ↗</button><button class="secondary" id="home">MAIN MENU</button></div>`;overlay.style.display='flex';$('next').onclick=()=>{buildLevel(level+1);state='play';overlay.style.display='none';say(`LEVEL ${level+1} // ONLINE`)};$('home').onclick=panelMenu}else{state='won';panel.innerHTML=`<div class="eyebrow">ALL FOUR SECTORS STABILIZED</div><h1>REALITY <span>RESTORED</span></h1><p class="lead">You escaped Reality.exe. All 46 data shards recovered across four sectors. The simulation has been stabilized.</p><div class="featuregrid"><div class="feature"><b>FINAL SCORE</b>${score}</div><div class="feature"><b>SHARDS</b>${dataTotal()}</div><div class="feature"><b>HEARTS LEFT</b>${hearts}/5</div></div><div class="buttons"><button class="primary" id="again">PLAY AGAIN</button><button class="secondary" id="home">MAIN MENU</button></div>`;overlay.style.display='flex';$('again').onclick=()=>{score=0;hearts=5;buildLevel(0);state='play';overlay.style.display='none'};$('home').onclick=panelMenu}}
+function dataTotal(){return 6+8+14+18}
+function gameOver(reason){state='over';sfx('hurt');panel.innerHTML=`<div class="eyebrow">SIMULATION FAILURE</div><h1>${reason==='time'?'TIME <span>EXPIRED</span>':'SIGNAL <span>LOST</span>'}</h1><p class="lead">${reason==='time'?'The sector timer reached zero before the portal was opened.':'Your five-heart integrity system has failed.'} Your score: ${score}. Reboot the run and try a different route.</p><div class="buttons"><button class="primary" id="retry">REBOOT RUN</button><button class="secondary" id="home">MAIN MENU</button></div>`;overlay.style.display='flex';$('retry').onclick=()=>{score=0;hearts=5;buildLevel(0);state='play';overlay.style.display='none'};$('home').onclick=panelMenu}
+function action(a){if(state!=='play')return;if(a==='gravity'){gravity*=-1;player.vy=0;player.onGround=false;sfx('power');say(gravity<0?'GRAVITY INVERTED':'GRAVITY RESTORED')}else if(a==='freeze'){freeze=freeze>0?0:3;sfx('freeze');say(freeze?'TIME FROZEN · 3 SECONDS':'TIME RESUMED')}else if(a==='phase'){dimension=1-dimension;sfx('phase');say(dimension?'DIMENSION B · MAGENTA':'DIMENSION A · CYAN')}updateHud()}
+function overlap(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y}
+function isSolid(p){return p.kind!=='dimension'||p.dim===dimension}
+function hitPlayer(){if(invuln>0)return;hearts--;invuln=1.4;sfx('hurt');score=Math.max(0,score-40);if(hearts<=0){gameOver('hearts');return}player.x=player.spawnX;player.y=player.spawnY;player.vx=player.vy=0;gravity=1;say(`CORRUPTION HIT · ${hearts} HEARTS LEFT`);updateHud()}
+function update(dt,t){if(state!=='play')return;remaining=Math.max(0,limit-(t-levelStart)/1000);if(remaining<=0){gameOver('time');return}if(freeze>0)freeze=Math.max(0,freeze-dt);if(invuln>0)invuln-=dt;player.anim+=dt*10;
+ const L=keys.a||keys.arrowleft||touch.left,R=keys.d||keys.arrowright||touch.right,J=keys[' ']||keys.w||keys.arrowup||touch.jump;
+ if(L){player.vx-=1700*dt;player.face=-1}if(R){player.vx+=1700*dt;player.face=1}if(!L&&!R)player.vx*=Math.pow(.0008,dt);player.vx=Math.max(-270,Math.min(270,player.vx));
+ if(J&&!player.jumpLatch&&player.onGround){player.vy=-gravity*455;player.onGround=false;player.jumpLatch=true;sfx('jump')}if(!J)player.jumpLatch=false;
+ player.vy=Math.max(-720,Math.min(720,player.vy+gravity*1100*dt));let oldY=player.y;
+ player.x+=player.vx*dt;for(let p of platforms){if(!isSolid(p))continue;if(overlap(player,p)){if(player.vx>0)player.x=p.x-player.w;else if(player.vx<0)player.x=p.x+p.w;player.vx=0}}
+ player.y+=player.vy*dt;player.onGround=false;for(let p of platforms){if(!isSolid(p)||!overlap(player,p))continue;if(gravity===1&&oldY+player.h<=p.y+12&&player.vy>=0){player.y=p.y-player.h;player.vy=0;player.onGround=true}else if(gravity===-1&&oldY>=p.y+p.h-12&&player.vy<=0){player.y=p.y+p.h;player.vy=0;player.onGround=true}else if(player.x+player.w>p.x+4&&player.x<p.x+p.w-4){player.y=player.vy>0?p.y-player.h:p.y+p.h;player.vy=0}}
+ player.x=Math.max(0,Math.min(worldW-player.w,player.x));if(player.y>H+70||player.y<-140)hitPlayer();
+ if(!freeze)for(let s of spikes){s.phase+=dt*s.speed;s.spin=(s.spin||0)+dt*5;s.x=s.bx+(s.axis==='x'?Math.sin(s.phase)*s.range:0);s.y=s.by+(s.axis==='y'?Math.sin(s.phase)*s.range:0)}
+ for(let s of spikes)if(overlap(player,{x:s.x+3,y:s.y+3,w:s.w-6,h:s.h-5}))hitPlayer();
+ for(let s of shards){if(!s.got&&overlap(player,{x:s.x-10,y:s.y-10,w:20,h:20})){s.got=true;shardsGot++;score+=100;sfx('collect');for(let i=0;i<12;i++)particles.push({x:s.x,y:s.y,vx:(Math.random()-.5)*190,vy:(Math.random()-.5)*190,life:.6,color:C.cyan});say(`SHARD ${shardsGot}/${shardTargets[level]} · +100`)}}
+ for(let c of checkpoints){if(!c.active&&player.x+player.w/2>c.x){c.active=true;player.spawnX=c.x;player.spawnY=c.y;score+=75;sfx('collect');say('CHECKPOINT SAVED · +75')}}
+ portal.open=shardsGot>=shardTargets[level];if(overlap(player,portal)){if(portal.open)winScreen();else if(Math.random()<.025)say(`PORTAL LOCKED · ${shardTargets[level]-shardsGot} SHARDS NEEDED`)}
+ camera=Math.max(0,Math.min(worldW-W,player.x-W*.34));for(let p of particles){p.x+=p.vx*dt;p.y+=p.vy*dt;p.life-=dt}particles=particles.filter(p=>p.life>0);updateHud()}
+function glow(x,y,w,h,color,blur=0){ctx.save();ctx.fillStyle=color;if(blur){ctx.shadowColor=color;ctx.shadowBlur=blur}ctx.fillRect(x,y,w,h);ctx.restore()}
+function playerDraw(t){let p=player,x=p.x,y=p.y,w=p.w,h=p.h;ctx.save();ctx.translate(x+w/2,y+h/2);ctx.scale(p.face,gravity<0?-1:1);ctx.translate(0,p.onGround?Math.sin(p.anim)*1.2:0);
+ // neon silhouette and backpack
+ ctx.globalAlpha=.25;ctx.fillStyle=C.cyan;ctx.beginPath();ctx.ellipse(0,22,15,4,0,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
+ glow(-14,-9,5,16,C.violet,8);glow(-11,-13,22,26,'#162b4b',7);ctx.strokeStyle=C.cyan;ctx.lineWidth=1.5;ctx.strokeRect(-11,-13,22,26);
+ ctx.fillStyle='#203b60';ctx.beginPath();ctx.moveTo(-10,-10);ctx.lineTo(-8,8);ctx.lineTo(-4,14);ctx.lineTo(7,14);ctx.lineTo(11,5);ctx.lineTo(8,-10);ctx.closePath();ctx.fill();ctx.strokeStyle=C.violet;ctx.stroke();
+ glow(-5,-6,10,3,C.cyan,8);glow(-4,1,8,2,C.pink,6);
+ ctx.fillStyle='#27456c';ctx.beginPath();ctx.moveTo(-10,-16);ctx.lineTo(-8,-25);ctx.lineTo(4,-28);ctx.lineTo(11,-20);ctx.lineTo(9,-11);ctx.lineTo(-7,-11);ctx.closePath();ctx.fill();ctx.strokeStyle=C.cyan;ctx.stroke();
+ glow(-6,-21,14,4,C.cyan,13);glow(1,-20,4,2,'#fff',5);glow(-14,-10,5,9,C.pink,7);glow(9,-10,5,9,C.pink,7);
+ glow(-7,13,5,8,'#294879',4);glow(3,13,5,8,'#294879',4);glow(-9,20,8,3,C.cyan,8);glow(2,20,8,3,C.cyan,8);
+ // arm cannon
+ glow(10,-4,7,4,C.violet,7);ctx.restore()}
+function draw(t){ctx.clearRect(0,0,W,H);let grad=ctx.createLinearGradient(0,0,0,H);grad.addColorStop(0,'#050716');grad.addColorStop(.6,dimension?'#1a0b2c':'#0b1831');grad.addColorStop(1,'#080b18');ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
+ for(let s of stars){ctx.globalAlpha=s.a;glow((s.x-camera*.12+W*3)%W,s.y,s.r,s.r,'#c3d8ff',s.r*2)}ctx.globalAlpha=1;
+ ctx.save();ctx.strokeStyle=dimension?'#713779':'#1e607c';ctx.globalAlpha=.24;for(let x=-(camera*.2%65);x<W;x+=65){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}for(let y=0;y<H;y+=42){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}ctx.restore();
+ for(let i=0;i<24;i++){let x=((i*123-camera*.28)%(W+100)+W+100)%(W+100)-40,h=35+(i*43)%145;glow(x,H-45-h,30,h,'#101b39');glow(x,H-45-h,30,2,dimension?C.pink:'#226e94',5)}
+ // Sector-specific set dressing: ruins, temporal rings, split realities, reactor core.
+ if(player&&portal){
+  if(level===0){
+   for(let i=0;i<9;i++){let x=((i*173-camera*.18)%(W+190)+W+190)%(W+190)-70;glow(x,H-115,9,70+(i%3)*23,'#172440');glow(x,H-115,2,70+(i%3)*23,'#bd9a55',4);glow(x,H-115,16,3,'#bd9a55',6)}
+   ctx.save();ctx.globalAlpha=.18;ctx.strokeStyle='#d8a45c';ctx.lineWidth=3;for(let i=0;i<4;i++){ctx.beginPath();ctx.arc(W*.2+i*W*.22, H*.36, 32+i*7,Math.PI,Math.PI*2);ctx.stroke()}ctx.restore();
+  }else if(level===1){
+   for(let i=0;i<5;i++){let x=((i*247-camera*.13)%(W+100)+W+100)%(W+100)-30,y=145+(i%3)*70;ctx.save();ctx.translate(x,y);ctx.strokeStyle='#ff7c9d';ctx.globalAlpha=.28;ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,0,23+i*4,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.moveTo(0,-28-i*4);ctx.lineTo(0,28+i*4);ctx.moveTo(-28-i*4,0);ctx.lineTo(28+i*4,0);ctx.stroke();ctx.restore()}
+   ctx.save();ctx.globalAlpha=.08;ctx.fillStyle='#ff668b';ctx.font='900 92px ui-monospace';ctx.fillText('TIME//BROKEN',W*.14,H*.48);ctx.restore();
+  }else if(level===2){
+   ctx.save();ctx.globalAlpha=.12;ctx.fillStyle='#61f7ff';ctx.fillRect(0,0,W*.5,H);ctx.fillStyle='#ff4edb';ctx.fillRect(W*.5,0,W*.5,H);ctx.globalAlpha=.45;ctx.strokeStyle='#61f7ff';for(let x=0;x<W*.5;x+=38){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}ctx.strokeStyle='#ff4edb';for(let x=W*.5;x<W;x+=38){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}ctx.restore();
+  }else{
+   ctx.save();ctx.translate(W*.73,H*.36);ctx.globalAlpha=.18;ctx.strokeStyle='#ff5277';ctx.lineWidth=4;for(let r=28;r<125;r+=22){ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.stroke()}ctx.globalAlpha=.08;ctx.fillStyle='#ff5277';ctx.beginPath();ctx.arc(0,0,125,0,Math.PI*2);ctx.fill();ctx.restore();
+   ctx.save();ctx.globalAlpha=.11;ctx.fillStyle='#ff5277';ctx.font='900 70px ui-monospace';ctx.fillText('CORE//MELTDOWN',W*.12,H*.42);ctx.restore();
+  }
+ }
+ // Menu is drawn before a level exists; keep the animation loop alive without gameplay objects.
+ if(!player||!portal){ctx.globalAlpha=.045;for(let y=0;y<H;y+=4)glow(0,y,W,1,'#d5e5ff');ctx.globalAlpha=1;return;}
+ ctx.save();ctx.translate(-camera,0);
+ for(let p of platforms){if(!isSolid(p)){ctx.save();ctx.globalAlpha=.17;glow(p.x,p.y,p.w,p.h,dimension?C.cyan:C.pink);ctx.setLineDash([5,5]);ctx.strokeStyle=dimension?C.cyan:C.pink;ctx.strokeRect(p.x,p.y,p.w,p.h);ctx.restore();continue}let sectorColors=[C.gold,'#ff9a68',C.cyan,'#ff5277'];let col=p.kind==='dimension'?(dimension?C.pink:C.cyan):sectorColors[level];glow(p.x,p.y,p.w,p.h,level===1?'#24162c':level===3?'#2c1228':'#101a32');glow(p.x,p.y,p.w,3,col,12);glow(p.x,p.y+p.h-2,p.w,2,'#50618b');for(let xx=p.x+8;xx<p.x+p.w-4;xx+=22)glow(xx,p.y+7,8,2,col,4)}
+ for(let s of shards){if(s.got)continue;ctx.save();ctx.translate(s.x,s.y+Math.sin(t/180+s.phase)*4);ctx.rotate(t/380+s.phase);ctx.shadowColor=C.cyan;ctx.shadowBlur=18;ctx.fillStyle=C.cyan;ctx.beginPath();ctx.moveTo(0,-10);ctx.lineTo(7,0);ctx.lineTo(0,10);ctx.lineTo(-7,0);ctx.closePath();ctx.fill();ctx.fillStyle='#fff';ctx.fillRect(-1,-4,2,8);ctx.restore()}
+ for(let s of spikes){
+  if(s.type==='saw'){
+   ctx.save();ctx.translate(s.x+s.w/2,s.y+s.h/2);ctx.rotate(s.spin||0);ctx.shadowColor=C.red;ctx.shadowBlur=20;
+   ctx.fillStyle='#b8c7d9';ctx.strokeStyle='#ff647f';ctx.lineWidth=2;
+   for(let i=0;i<12;i++){ctx.rotate(Math.PI/6);ctx.beginPath();ctx.moveTo(s.w*.28,-s.h*.28);ctx.lineTo(s.w*.57,0);ctx.lineTo(s.w*.28,s.h*.28);ctx.closePath();ctx.fill();ctx.stroke()}
+   ctx.beginPath();ctx.arc(0,0,s.w*.32,0,Math.PI*2);ctx.fillStyle='#202c4a';ctx.fill();ctx.strokeStyle='#ff7187';ctx.stroke();
+   ctx.beginPath();ctx.arc(0,0,4,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();ctx.restore();
+  }else if(s.type==='laser'){
+   ctx.save();ctx.shadowColor=C.red;ctx.shadowBlur=18;ctx.fillStyle='#ff416c';ctx.fillRect(s.x,s.y,s.w,s.h);ctx.globalAlpha=.55;ctx.fillStyle='#fff';ctx.fillRect(s.x,s.y+(s.h> s.w?s.h/2-2:Math.max(0,s.h/2-1)),s.w,s.h> s.w?3:2);ctx.restore();
+   ctx.save();ctx.strokeStyle='#ff5577';ctx.globalAlpha=.45;ctx.setLineDash([4,5]);ctx.strokeRect(s.x-5,s.y-5,s.w+10,s.h+10);ctx.restore();
+  }else{
+   ctx.save();ctx.translate(s.x+s.w/2,s.y+s.h/2);ctx.rotate(t/300);ctx.shadowColor=C.red;ctx.shadowBlur=17;ctx.fillStyle='#3b142e';ctx.strokeStyle=C.red;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,-s.h*.72);ctx.lineTo(s.w*.72,0);ctx.lineTo(0,s.h*.72);ctx.lineTo(-s.w*.72,0);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle='#fff';ctx.fillRect(-2,-2,4,4);ctx.restore();
+  }
+ }
+ for(let c of checkpoints){glow(c.x,c.y,3,56,c.active?C.green:C.violet,14);glow(c.x-7,c.y,18,3,c.active?C.green:C.violet,8)}
+ // exit portal clearly locked/unlocked
+ ctx.save();ctx.translate(portal.x+portal.w/2,portal.y+portal.h/2);ctx.scale(1+Math.sin(t/180)*.06,1);let col=portal.open?C.cyan:C.red;ctx.shadowColor=col;ctx.shadowBlur=portal.open?25:9;ctx.strokeStyle=col;ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(0,0,portal.w*.43,portal.h*.46,0,0,Math.PI*2);ctx.stroke();ctx.globalAlpha=.14;ctx.fillStyle=col;ctx.fill();ctx.globalAlpha=1;ctx.strokeStyle='#fff';ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(0,0,portal.w*.27,portal.h*.36,t/900,t/900+1,Math.PI*1.6);ctx.stroke();ctx.restore();
+ if(portal.open){glow(portal.x+portal.w/2-2,portal.y+10,4,portal.h-20,C.cyan,13)}else{ctx.fillStyle=C.red;ctx.font='bold 9px ui-monospace';ctx.textAlign='center';ctx.fillText(`${shardTargets[level]-shardsGot} LEFT`,portal.x+portal.w/2,portal.y-7)}
+ playerDraw(t);for(let p of particles){ctx.globalAlpha=Math.max(0,p.life/.6);glow(p.x,p.y,4,4,p.color,7)}ctx.globalAlpha=1;ctx.restore();
+ ctx.globalAlpha=.045;for(let y=0;y<H;y+=4)glow(0,y,W,1,'#d5e5ff');ctx.globalAlpha=1;if(freeze>0){ctx.fillStyle='#61f7ff0a';ctx.fillRect(0,0,W,H);ctx.fillStyle=C.cyan;ctx.font='bold 10px ui-monospace';ctx.textAlign='right';ctx.fillText(`TIME FROZEN ${freeze.toFixed(1)}s`,W-18,194)}if(dimension){ctx.fillStyle='#ff4edb08';ctx.fillRect(0,0,W,H)}if(t<toastUntil)$('toast').style.display='block';else $('toast').style.display='none'}
+window.addEventListener('keydown',e=>{let k=e.key.toLowerCase();if([' ','arrowup','arrowleft','arrowright'].includes(k))e.preventDefault();if(!keys[k]){if(k==='q')action('gravity');if(k==='e')action('freeze');if(k==='f')action('phase');if(k==='r'&&state==='play'){buildLevel(level);say('LEVEL RESTARTED')}if(k==='escape')pauseGame()}keys[k]=true});window.addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
+document.querySelectorAll('[data-key]').forEach(b=>{let k=b.dataset.key;let down=e=>{e.preventDefault();touch[k]=true;b.classList.add('active')},up=e=>{e.preventDefault();touch[k]=false;b.classList.remove('active')};b.addEventListener('pointerdown',down);b.addEventListener('pointerup',up);b.addEventListener('pointercancel',up);b.addEventListener('pointerleave',up)});document.querySelectorAll('[data-action]').forEach(b=>b.addEventListener('click',()=>action(b.dataset.action)));
+function loop(t){let dt=Math.min(.033,(t-last)/1000||0);last=t;update(dt,t);draw(t);requestAnimationFrame(loop)}
+resize();panelMenu();requestAnimationFrame(loop);
+})();
+</script></body></html>
